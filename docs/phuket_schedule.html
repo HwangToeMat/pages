@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>푸켓 일정 간략판</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif; background: #fff; color: #1a1a1a; line-height: 1.5; padding: 24px; max-width: 860px; margin: 0 auto; font-size: 14px; }
+  h1 { font-size: 21px; margin-bottom: 2px; }
+  .sub { color: #666; font-size: 12.5px; margin-bottom: 6px; }
+  .draft-banner { background: #fff3cd; border: 1px solid #ffe08a; color: #7a5b00; font-size: 12.5px; padding: 6px 10px; border-radius: 6px; margin-bottom: 16px; }
+  .day { border: 1px solid #ddd; border-radius: 8px; margin-bottom: 14px; overflow: hidden; page-break-inside: avoid; }
+  .day-head { padding: 7px 12px; font-weight: 700; font-size: 14.5px; color: #fff; display: flex; justify-content: space-between; align-items: baseline; }
+  .day-head .theme { font-weight: 400; font-size: 12px; opacity: .92; }
+  .d0 .day-head { background: #5b7db1; }
+  .d1 .day-head { background: #2e9e8f; }
+  .d2 .day-head { background: #d98032; }
+  .d3 .day-head { background: #8e5bb1; }
+  .d4 .day-head { background: #c0504d; }
+  table.sched { width: 100%; border-collapse: collapse; }
+  table.sched td { padding: 5px 10px; border-top: 1px solid #eee; vertical-align: top; }
+  table.sched td.t { width: 88px; white-space: nowrap; color: #555; font-variant-numeric: tabular-nums; font-weight: 600; }
+  table.sched tr:first-child td { border-top: none; }
+  .en { color: #777; font-size: 12px; }
+  .badge { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 1px 6px; border-radius: 4px; margin-left: 4px; vertical-align: 1px; white-space: nowrap; }
+  .b-resv { background: #ffe3e3; color: #b02020; }
+  .b-cash { background: #e6f4e6; color: #1e7a1e; }
+  .b-pend { background: #fff0d6; color: #9a6b00; }
+  .b-opt  { background: #e8eefc; color: #2f5bb7; }
+  .note { color: #888; font-size: 12px; }
+  .backup { color: #8a6d3b; font-size: 12px; background: #fdf8ec; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 2px; }
+  a.lnk { color: #2f5bb7; font-size: 11px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  a.lnk:hover { text-decoration: underline; }
+  h2 { font-size: 16px; margin: 22px 0 8px; }
+  table.plain { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.plain th, table.plain td { border: 1px solid #ddd; padding: 5px 8px; text-align: left; }
+  table.plain th { background: #f5f5f5; }
+  ul.check { list-style: none; }
+  ul.check li { padding: 3px 0; }
+  ul.check li::before { content: "☐ "; color: #999; }
+  .cols { display: flex; gap: 18px; flex-wrap: wrap; }
+  .cols > div { flex: 1; min-width: 280px; }
+  @media print {
+    body { padding: 0; font-size: 12px; }
+    .day { margin-bottom: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🇹🇭 푸켓 3인 여행 — 일정 간략판</h1>
+<div class="sub">2026.10.7(수)~10.12(월) · OZ747/748 · 현지 4박 · 30대 남 3인</div>
+<div class="draft-banner">✅ 전 일정 픽스 완료 (2026-08-30) — 숙소 3곳 예약 완료 · 투어/차량/eSIM은 체크리스트 링크로 예매</div>
+
+<!-- Day 1 -->
+<div class="day d0">
+  <div class="day-head"><span>Day 1 · 10/7 (수) — 도착 ✅</span><span class="theme">인천 → 푸켓 → 올드타운 1박</span></div>
+  <table class="sched">
+    <tr><td class="t">15:00</td><td>인천공항 T2 도착 · 체크인 <span class="note">— TDAC는 10/4~ 미리 제출</span></td></tr>
+    <tr><td class="t">17:20</td><td>OZ747 출발 (6h15m)</td></tr>
+    <tr><td class="t">21:35</td><td>푸켓공항 도착 · 입국심사 <span class="note">— eSIM 활성화</span></td></tr>
+    <tr><td class="t">22:30</td><td>공항 → 올드타운 (40~50분) — <b>그랩 호출</b> <span class="note">3인 1대 600~900밧, 터미널 내 픽업 가능 · 심야 할증 심하면 미터택시(600~700밧+공항비 100밧) 대안</span></td></tr>
+    <tr><td class="t">23:15</td><td>체크인: <b>치노 타운 앳 야오와랏</b> <span class="en">Chino Town at Yaowarat Phuket</span> ✅ <a class="lnk" target="_blank" rel="noopener" href="https://www.agoda.com/ko-kr/chino-town-gallery-hostel/hotel/phuket-th.html">아고다↗</a> <span class="note">올드타운 한복판 · 심야 도착 사전 통보</span></td></tr>
+    <tr><td class="t">23:40</td><td><b>올드타운 밤거리 야식+한잔</b> — 야오와랏·탈랑 로드, 소이 로마니 <span class="en">Yaowarat / Thalang Rd / Soi Romanee</span> 걸으면서 열려 있는 곳 골라 들어가기<br><span class="note">AI 추천: <b>고벤츠</b> <span class="en">Go Benz</span> — 미슐랭 등재 죽+크리스피 폭, ~01:30, 현금 · <b>팀버 헛</b> <span class="en">Timber Hut</span> — 숙소 같은 길 도보 2분, ~02:00 라이브 바(밤엔 밴드, 심야엔 DJ), 입장료 없음</span><br><span class="backup">올드타운 바 다수가 자정 전후 마감 — 심야까지 확실한 건 위 두 곳 · 편의점 주류 판매는 자정 종료</span></td></tr>
+  </table>
+</div>
+
+<!-- Day 2 -->
+<div class="day d1">
+  <div class="day-head"><span>Day 2 · 10/8 (목) — 피피섬 IN ✅</span><span class="theme">페리 → 자유 오후·뷰포인트 → 해산물·파이어쇼</span></div>
+  <table class="sched">
+    <tr><td class="t">07:50</td><td>푸켓 페리 선착장 도착 <span class="en">Rassada Pier 라사다 부두</span> <span class="note">숙소에서 차 10분</span></td></tr>
+    <tr><td class="t">08:30</td><td>페리 출발 (~2h) — <b>빅보트(대형 페리)</b> <span class="badge b-resv">클룩 예매</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/x1gO7_exy8">티켓↗</a> <span class="note">대형 페리가 결항에 강함 · 하선 시 섬 청소비 20밧 현금</span></td></tr>
+    <tr><td class="t">10:30</td><td>피피섬 도착 → 짐 맡기기: <b>피피 하버 뷰 호텔</b> <span class="en">Phi Phi Harbour View Hotel</span> ✅ <a class="lnk" target="_blank" rel="noopener" href="https://www.agoda.com/ko-kr/phi-phi-harbour-view-hotel/hotel/koh-phi-phi-th.html">아고다↗</a> <span class="note">체크인 14:00 · 항구 방면(조용) — 파티존까지 도보</span></td></tr>
+    <tr><td class="t">11:30</td><td><b>선착장 근처 점심</b> — 마을 골목 맛집 중 골라 들어가기<br><span class="note">AI 추천: <b>갈릭 1992</b> <span class="en">Garlic 1992</span>(1992년 노포 파냉커리, 현금만) · <b>온리 누들스</b> <span class="en">Only Noodles</span>(팟타이) · <b>파파야</b> <span class="en">Papaya</span>(커리, 양 많음)</span></td></tr>
+    <tr><td class="t">13:00</td><td><b>자유 오후</b> — 해변 수영 · 숙소 수영장 · 톤사이 골목 구경 <span class="badge b-opt">자유</span></td></tr>
+    <tr><td class="t">17:00</td><td><b>피피 뷰포인트</b> 선셋 <span class="en">Phi Phi Viewpoint</span> — 양쪽 바다 항공샷 뷰 (등반 20~30분, 입장 30~50밧)</td></tr>
+    <tr><td class="t">19:45</td><td><b>해산물 저녁</b> — 해변가 얼음 진열대에서 골라 조리 (시가, 3인 1,500~3,000밧대) <span class="badge b-cash">현금</span><br><span class="note">AI 추천: <b>톤사이 씨푸드</b> <span class="en">Tonsai Seafood</span>(숙소 도보 2분, 베이 뷰) · <b>코너 씨푸드</b> <span class="en">Corner Seafood</span>(로컬 저렴) · 피피엔 야시장 없음(아침 마켓뿐)</span></td></tr>
+    <tr><td class="t">21:00</td><td><b>파이어쇼</b>: Carlito's (톤사이 베이 해변, 21:00~21:30경, 숙소 도보 5분) — 해변 테이블에서 맥주 <span class="note">시간 현지 재확인 · 백업: Slinky(로달럼 20:25~)</span></td></tr>
+    <tr><td class="t">22:00~</td><td><b>골목 따라 자유롭게 한잔</b> — 끌리는 곳으로<br><span class="note">AI 추천: <b>레게 바</b> <span class="en">Reggae Bar</span>(관광객 무에타이 링, 링 오르면 위스키 버킷 무료) · <b>스톤즈</b> <span class="en">Stones</span>(로달럼 빈백 라운지)</span></td></tr>
+  </table>
+</div>
+
+<!-- Day 3 -->
+<div class="day d2">
+  <div class="day-head"><span>Day 3 · 10/9 (금) — 피피 스노클링 → 빠통 ✅</span><span class="theme">클룩 소그룹 투어 → 15:30 페리 → 방라로드</span></div>
+  <table class="sched">
+    <tr><td class="t">08:50</td><td>맥도날드 피피 집결 (10분 전) → <b>09:00 클룩 소그룹 스노클링 투어 (판타완)</b> — 몽키비치 30분 하선·바이킹동굴·피레라군 45분 수영·로사마·마야베이 1시간, 13:00 복귀 <span class="badge b-resv">클룩 예매</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/pXJQYL2O1N">투어↗</a><br><span class="note">마야베이 국립공원비 400밧/인 현장 결제(현금) · 원숭이: 빈손 하선, 먹이 금지 · 체크아웃 짐은 호텔 보관, 레이트 체크아웃(~13:30) 체크인 때 문의</span><br><span class="backup">기상 취소 시: 10/10 호핑으로 몰기</span></td></tr>
+    <tr><td class="t">13:15</td><td><b>선착장 근처 점심</b> → 수영장 샤워·옷 갈아입기·짐 찾기 <span class="note">레이트 체크아웃은 무료일 때만</span><br><span class="note">AI 추천: <b>온리 누들스</b> <span class="en">Only Noodles</span>(팟타이 전문, 빠름) · <b>파파야</b> <span class="en">Papaya</span>(커리, 양 많음)</span></td></tr>
+    <tr><td class="t">15:30</td><td>페리 복귀 (빅보트, → 푸켓 ~17:30) <span class="badge b-resv">클룩 예매</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/x1gO7_exy8">티켓↗</a> <span class="note">페리 시간: 14:30/15:00/15:30 — 15:30이 여유</span></td></tr>
+    <tr><td class="t">17:45</td><td><b>숙소로 이동 (차 25분) → 체크인·샤워</b>: <b>로열 파라다이스 호텔 앤 스파</b> <span class="en">The Royal Paradise Hotel &amp; Spa</span> 2박 ✅ <a class="lnk" target="_blank" rel="noopener" href="https://www.agoda.com/ko-kr/the-royal-paradise-hotel-spa/hotel/phuket-th.html">아고다↗</a><br><span class="note">빠통 비치 지역, 방라로드 도보권 · 이동은 페리표 합승밴(150~200밧/인) or 그랩</span></td></tr>
+    <tr><td class="t">19:30</td><td><b>빠통 비치 첫 저녁</b> — 숙소 근처 태국식<br><span class="note">AI 추천: <b>넘버6</b> <span class="en">No.6 Restaurant</span>(가성비 태국식+해산물, 웨이팅 15~30분) · <b>깝끌루어이</b> <span class="en">Kaab Gluay</span>(로컬 유명 태국식당)</span></td></tr>
+    <tr><td class="t">21:00</td><td><b>방라로드 구경 + 한잔</b> — 빠통의 바·펍·클럽이 몰린 중심 번화가(숙소 도보 10분), 걸으면서 끌리는 곳으로 <span class="badge b-opt">자유</span><br><span class="note">AI 추천: <b>Red Hot Bar</b>(라이브 록 밴드) · <b>Molly's Tavern</b>(아이리시 펍, 오션뷰) · <b>Aussie Bar</b>(스포츠바)</span></td></tr>
+  </table>
+</div>
+
+<!-- Day 4 -->
+<div class="day d3">
+  <div class="day-head"><span>Day 4 · 10/10 (토) — 팡아만 투어 + 토요일 밤 ✅</span><span class="theme">제임스본드섬·카누 → 야시장 저녁 → 밤 옵션</span></div>
+  <table class="sched">
+    <tr><td class="t">07:30</td><td>호텔 픽업 → 아오포 부두 <span class="en">Ao Po Pier</span> (차 ~1시간, 09:00 체크인) <span class="badge b-resv">클룩 예매</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/jy2qWOOY3P">투어↗</a></td></tr>
+    <tr><td class="t">09:45</td><td><b>팡아만 제임스본드섬 투어</b> — 파낙섬 카누(종유석·맹그로브 동굴) → 제임스본드섬 <span class="en">카오타푸</span>·카오핑칸 → 홍섬 카누 → 13:30 선상 점심(갓 조리 태국식) → 15:00 수영·카누·과일<br><span class="note">배에서 맥주는 유료 바(밧 현금) · 기상에 따라 일부 포인트 변경 가능</span><br><span class="backup">기상 취소 시: 야누이 비치 자유 스노클링 or 안다만다 워터파크</span></td></tr>
+    <tr><td class="t">16:30</td><td>복귀 출발 → 빠통 도착 ~18:00</td></tr>
+    <tr><td class="t">18:00</td><td><b>재정비 — 옵션 (자유롭게 택)</b> <span class="badge b-opt">자유</span><br><span class="note">호텔 수영장 한 타임 · 마사지 1시간 (AI 추천: <b>라리사 마사지</b> <span class="en">Lalisa Massage (Thairapy)</span>, 팁 관례 시간당 50~100밧) · 빠통 비치 선셋 산책(일몰 ~18:20) · 방에서 휴식</span></td></tr>
+    <tr><td class="t">19:30</td><td><b>야시장 저녁</b> — 빠통 야시장에서 해산물+길거리 음식 <span class="badge b-cash">현금</span><br><span class="note">AI 추천: <b>반잔 시장 2층</b> <span class="en">Banzaan Market</span>(정실론 뒤 — 1층서 활해산물 골라 2층서 조리 🦞, 밤엔 주변이 야시장化) · <b>말린 플라자</b> <span class="en">Malin Plaza</span>(빠통 남쪽, 먹거리 중심 야시장, 매일) · <b>OTOP 마켓</b>(랏우팃 로드, 푸드코트+비어바)</span></td></tr>
+    <tr><td class="t">21:00</td><td><b>밤 프로그램 — 옵션 (당일 컨디션 보고 택 1)</b> <span class="badge b-pend">미정</span><br><span class="note">AI 추천: <b>방라 복싱 스타디움</b>(무에타이 — 토요일은 MMA, 21:00, 스타디움석 1,600밧) · <b>사이먼 카바레</b>(트랜스젠더 쇼, 매일 18:00/19:45/21:30, 70분, ~800밧) · <b>OTOP The Hole</b>(야시장 안 비어바 — 당구·다트·비어퐁)</span></td></tr>
+    <tr><td class="t">23:00~</td><td><b>이후 자유</b> — 끌리는 곳으로 <span class="badge b-opt">자유</span><br><span class="note">AI 추천: <b>Kee Sky Lounge</b>(루프탑, 방라 옆 — 해피아워 21~23시 1+1) · <b>Craft Lounge</b>(크래프트 맥주 셀렉션 빠통 최대) · <b>Illuzion</b>(초대형 EDM 클럽, 새벽까지) · 방라로드에서 한 잔 더</span></td></tr>
+  </table>
+</div>
+
+<!-- Day 5 -->
+<div class="day d4">
+  <div class="day-head"><span>Day 5 · 10/11 (일) — 남부 코스 + 선데이마켓 → 출국 ✅</span><span class="theme">여유 아침 → 빅부다·왓찰롱 → 올드타운·선데이마켓 → 공항</span></div>
+  <table class="sched">
+    <tr><td class="t">08:30~</td><td><b>호텔 여유 아침</b> — 조식·수영장 (로열 파라다이스 즐기는 시간)</td></tr>
+    <tr><td class="t">11:45</td><td>체크아웃 · 짐은 차에</td></tr>
+    <tr><td class="t">12:00</td><td><b>🚗 8시간 차량 대여 시작</b> — 기사 포함 전용차 픽업 <span class="badge b-resv">클룩 예매 · 픽업 12:00 메모</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/vXnvAbJByD">차량↗</a><br><span class="note">12:00~20:30 이용 · 추가금은 현금으로: 공항 지역비 250밧 + 8시간 넘는 시간은 시간당 300밧 · 세단은 24인치 캐리어 3개까지 (28인치가 있으면 SUV로 예약)</span></td></tr>
+    <tr><td class="t">12:40</td><td><b>점심 (빅부다 언덕 뷰)</b> — AI 추천: <b>낙껏 씨뷰 카페</b> <span class="en">Nak-Kerd Seaview Cafe</span></td></tr>
+    <tr><td class="t">14:00</td><td><b>빅부다</b> <span class="en">Big Buddha</span> <span class="note">복장: 어깨·무릎 가림(사롱 지참)</span></td></tr>
+    <tr><td class="t">15:15</td><td><b>왓찰롱</b> <span class="en">Wat Chalong</span></td></tr>
+    <tr><td class="t">16:45</td><td>올드타운 도착 → <b>마사지 1시간</b> <span class="note">AI 추천: <b>Kim's Massage &amp; Spa</b> — 짐은 차에 있으니 몸만</span></td></tr>
+    <tr><td class="t">18:00</td><td><b>선데이 워킹스트리트</b> <span class="en">Lard Yai, Thalang Rd</span> — 야시장 저녁+구경 제대로 (~1h 40m) <span class="badge b-cash">현금</span> <span class="note">일요일만 16~22시</span></td></tr>
+    <tr><td class="t">19:45</td><td>올드타운 출발 → 공항 (40~50분)</td></tr>
+    <tr><td class="t">20:30</td><td>공항 도착 · <b>🚗 차량 대여 종료</b> · 체크인 <span class="note">출발 2시간 15분 전</span></td></tr>
+    <tr><td class="t">22:45</td><td>OZ748 출발 → 10/12(월) 07:05 인천 도착</td></tr>
+  </table>
+</div>
+
+<div class="cols">
+<div>
+<h2>🍽 식사 계획 (니즈: 해산물·야시장·맥주)</h2>
+<table class="plain">
+  <tr><th>끼</th><th>계획</th><th>비고</th></tr>
+  <tr><td>수 야식</td><td>올드타운 밤거리</td><td>AI 추천: 고벤츠(미슐랭 죽, ~01:30)·팀버 헛(한잔)</td></tr>
+  <tr><td>목 점심</td><td>피피 선착장 골목</td><td>AI 추천: 갈릭 1992(현금만)·온리 누들스·파파야</td></tr>
+  <tr><td>목 저녁</td><td>해산물 골라 조리 🦞</td><td>해산물 ① · AI 추천: 톤사이 씨푸드·코너 씨푸드</td></tr>
+  <tr><td>금 점심</td><td>피피 골목 간단히</td><td>AI 추천: 온리 누들스·파파야</td></tr>
+  <tr><td>금 저녁</td><td>빠통 태국식</td><td>AI 추천: 넘버6·깝끌루어이</td></tr>
+  <tr><td>토 점심</td><td>팡아만 선상 점심</td><td>투어 포함 — 갓 조리 태국식(똠얌·볶음밥)</td></tr>
+  <tr><td>토 저녁</td><td>빠통 야시장 🦞</td><td>해산물 ② · AI 추천: 반잔 시장 2층(활랍스터)·말린 플라자·OTOP</td></tr>
+  <tr><td>일 점심</td><td>빅부다 인근</td><td>AI 추천: 낙껏 씨뷰 카페(뷰)</td></tr>
+  <tr><td>일 저녁</td><td>선데이마켓 야시장</td><td>야시장 피날레</td></tr>
+</table>
+</div>
+<div>
+<h2>✅ 예약/준비 체크리스트</h2>
+<ul class="check">
+  <li><b>숙소 완료</b>: 치노 타운(10/7) · 피피 하버 뷰(10/8) · 로열 파라다이스 트리플(10/9~11)</li>
+  <li>치노 타운에 심야 체크인(23시대 도착) 사전 통보</li>
+  <li><b>TDAC</b> 입국카드 — 10/4~ 3인 일괄 제출 (tdac.immigration.go.th)</li>
+  <li>페리 왕복 예매 (클룩, 빅보트) — 10/8 08:30 / 10/9 15:30 <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/x1gO7_exy8">티켓↗</a></li>
+  <li>10/9 피피 스노클링 투어 예매 (클룩 판타완 09:00) <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/pXJQYL2O1N">투어↗</a></li>
+  <li>10/10 팡아만 제임스본드섬 투어 예매 (클룩, 07:30 픽업) <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/jy2qWOOY3P">투어↗</a></li>
+  <li>10/10 밤 프로그램 — 당일 택 1 (무에타이는 예매 시 미리)</li>
+  <li>10/11 8시간 차량 대여 예약 (클룩 — 픽업 12:00 메모, 캐리어 28인치면 SUV) <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/vXnvAbJByD">차량↗</a></li>
+  <li>태국 eSIM 3인 구매 (클룩) <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/9X0kA2aBwV">eSIM↗</a></li>
+  <li>현금 3인 5,000~8,000밧 (ATM 수수료 220밧/건 — 1회 크게) + GLN QR(토스/하나)</li>
+  <li>아쿠아슈즈 · 오리발(렌탈 유료) · 리프세이프 선크림 · 멀미약 · 사롱</li>
+  <li>출발 직전(10/5~6) 기상 예보 확인 — 해양 일정 3건(페리·피피 투어·팡아만)의 취소·변경 규정 체크</li>
+  <li>현장: 하버 뷰 체크인 때 레이트 체크아웃 문의(무료일 때만) · 차량 대여 픽업 12:00 조율(운영사 연락 시)</li>
+</ul>
+</div>
+</div>
+
+<h2>🍴 AI 추천 모음 (지역별 총정리)</h2>
+<div class="cols">
+<div>
+<table class="plain">
+  <tr><th>지역</th><th>먹거리</th></tr>
+  <tr><td>올드타운<br>(수·일)</td><td><b>고벤츠</b> Go Benz — 미슐랭 죽+크리스피 폭, 17:00~01:30, 월 휴무, 현금 · <b>원춘</b> One Chun — 미슐랭 페라나칸(무홍), 예약 불가 · <b>미똔뽀</b> Mee Ton Poe — 호끼엔미 노포 60~80밧 · <b>로띠 태우남</b> — 70년 로띠, 아침~낮, 선데이마켓 입구 · 탈랏 까셋 야시장 — 심야 야식</td></tr>
+  <tr><td>피피<br>(목·금)</td><td><b>갈릭 1992</b> — 노포 파냉커리, 현금만 · <b>온리 누들스</b> — 팟타이 · <b>파파야</b> — 커리, 양 많음 · <b>톤사이 씨푸드</b> — 해변 얼음 진열 골라 조리, 베이 뷰 · <b>코너 씨푸드</b> — 로컬 저렴</td></tr>
+  <tr><td>빠통<br>(금·토)</td><td><b>넘버6</b> — 가성비 태국식+해산물, 웨이팅 15~30분 · <b>깝끌루어이</b> Kaab Gluay — 로컬 유명 태국식 · <b>반잔 시장 2층</b> — 활해산물 골라 조리 · <b>말린 플라자</b> — 먹거리 야시장 · <b>OTOP 마켓</b> — 푸드코트+비어바 · 브라일리 치킨라이스 — 카오만까이(아침) · 사보이 — 대형 해산물(관광용, 호불호)</td></tr>
+  <tr><td>남부(일)</td><td><b>낙껏 씨뷰 카페</b> — 빅부다 언덕 뷰 맛집</td></tr>
+</table>
+</div>
+<div>
+<table class="plain">
+  <tr><th>지역</th><th>바 · 밤 · 기타</th></tr>
+  <tr><td>올드타운</td><td><b>팀버 헛</b> Timber Hut — 1991년 라이브 바, 매일 ~02:00, 노커버</td></tr>
+  <tr><td>피피</td><td><b>Carlito's</b> — 파이어쇼 21:00~, 해변 테이블 · <b>레게 바</b> — 관광객 무에타이 링(오르면 위스키 버킷 무료) · <b>스톤즈</b> — 로달럼 빈백 라운지 · Slinky — 로달럼 파티 바, 파이어쇼 20:25~</td></tr>
+  <tr><td>빠통</td><td><b>Red Hot Bar</b> — 라이브 록 밴드 · <b>Molly's Tavern</b> — 아이리시 펍, 오션뷰 · <b>Aussie Bar</b> — 스포츠바 · <b>Kee Sky Lounge</b> — 루프탑, 해피아워 21~23시 1+1 · <b>Craft Lounge</b> — 크래프트 맥주 최다 · <b>Illuzion</b> — 초대형 EDM 클럽 · <b>The Hole</b> — OTOP 안 당구·다트 비어바 · <b>방라 복싱 스타디움</b> — 무에타이 매일 21:00, 토 MMA, 1,600밧 · <b>사이먼 카바레</b> — 쇼 매일 3회, ~800밧</td></tr>
+  <tr><td>마사지</td><td><b>라리사</b> Lalisa (빠통) · <b>Kim's Massage &amp; Spa</b> (올드타운, 짐 보관 가능) — 팁 관례 시간당 50~100밧</td></tr>
+</table>
+</div>
+</div>
+
+<h2>ℹ️ 메모</h2>
+<table class="plain">
+  <tr><td>날씨</td><td>10월 초 = 우기 끝물. 스콜성 1~2h, 이안류 주의(빨간 깃발=수영 금지). 해양투어는 오전 배치 + 1~2일 전 예보 확인</td></tr>
+  <tr><td>교통</td><td>그랩(정찰·공항 픽업 가능한 유일 앱) / 볼트(10~20% 저렴, 심야 불안정). 빠통↔푸켓타운 300~500밧</td></tr>
+  <tr><td>결제·팁</td><td>야시장·노점·투어 추가금은 현금 · GLN QR(토스/하나) 노점 결제 가능 · 팁: 마사지 시간당 50~100밧, 기사 20~50밧</td></tr>
+  <tr><td>예산</td><td>1인 하루 10~20만원(숙박 제외, 투어 포함) — 전 일정 여유 있음</td></tr>
+</table>
+
+</body>
+</html>
