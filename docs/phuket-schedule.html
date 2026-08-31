@@ -41,9 +41,21 @@
   ul.check li::before { content: "☐ "; color: #999; }
   .cols { display: flex; gap: 18px; flex-wrap: wrap; }
   .cols > div { flex: 1; min-width: 280px; }
+  .spot { cursor: pointer; border-bottom: 1.5px dotted #2f5bb7; }
+  .spot::after { content: " 📷"; font-size: 11px; }
+  #spot-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 100; }
+  #spot-overlay.on { display: flex; align-items: center; justify-content: center; padding: 20px; }
+  #spot-modal { background: #fff; border-radius: 12px; max-width: 680px; width: 100%; max-height: 86vh; overflow-y: auto; padding: 16px; }
+  #spot-modal h3 { font-size: 16px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+  #spot-close { cursor: pointer; border: none; background: #eee; border-radius: 6px; font-size: 13px; padding: 3px 10px; }
+  #spot-imgs img { width: 100%; border-radius: 8px; margin-bottom: 8px; display: block; background: #f3f3f3; min-height: 120px; }
+  #spot-more { display: inline-block; margin-top: 2px; font-size: 13px; font-weight: 700; color: #2f5bb7; text-decoration: none; }
   @media print {
     body { padding: 0; font-size: 12px; }
     .day { margin-bottom: 10px; }
+    .spot { border-bottom: none; }
+    .spot::after { content: ""; }
+    #spot-overlay { display: none !important; }
   }
 </style>
 </head>
@@ -62,7 +74,7 @@
     <tr><td class="t">21:35</td><td>푸켓공항 도착 · 입국심사 <span class="note">— eSIM 활성화</span></td></tr>
     <tr><td class="t">22:30</td><td>공항 → 올드타운 (40~50분) — <b>그랩 호출</b> <span class="note">3인 1대 600~900밧, 터미널 내 픽업 가능 · 심야 할증 심하면 미터택시(600~700밧+공항비 100밧) 대안</span></td></tr>
     <tr><td class="t">23:15</td><td>체크인: <b>치노 타운 앳 야오와랏</b> <span class="en">Chino Town at Yaowarat Phuket</span> ✅ <a class="lnk" target="_blank" rel="noopener" href="https://www.agoda.com/ko-kr/chino-town-gallery-hostel/hotel/phuket-th.html">아고다↗</a> <span class="note">올드타운 한복판 · 심야 도착 사전 통보</span></td></tr>
-    <tr><td class="t">23:40</td><td><b>올드타운 밤거리 야식+한잔</b> — 야오와랏·탈랑 로드, 소이 로마니 <span class="en">Yaowarat / Thalang Rd / Soi Romanee</span> 걸으면서 열려 있는 곳 골라 들어가기<br><span class="note">AI 추천: <b>고벤츠</b> <span class="en">Go Benz</span> — 미슐랭 등재 죽+크리스피 폭, ~01:30, 현금 · <b>팀버 헛</b> <span class="en">Timber Hut</span> — 숙소 같은 길 도보 2분, ~02:00 라이브 바(밤엔 밴드, 심야엔 DJ), 입장료 없음</span><br><span class="backup">올드타운 바 다수가 자정 전후 마감 — 심야까지 확실한 건 위 두 곳 · 편의점 주류 판매는 자정 종료</span></td></tr>
+    <tr><td class="t">23:40</td><td><b>올드타운 밤거리 야식+한잔</b> — <span class="spot" data-spot="oldtown">야오와랏·탈랑 로드, 소이 로마니</span> <span class="en">Yaowarat / Thalang Rd / Soi Romanee</span> 걸으면서 열려 있는 곳 골라 들어가기<br><span class="note">AI 추천: <b>고벤츠</b> <span class="en">Go Benz</span> — 미슐랭 등재 죽+크리스피 폭, ~01:30, 현금 · <b>팀버 헛</b> <span class="en">Timber Hut</span> — 숙소 같은 길 도보 2분, ~02:00 라이브 바(밤엔 밴드, 심야엔 DJ), 입장료 없음</span><br><span class="backup">올드타운 바 다수가 자정 전후 마감 — 심야까지 확실한 건 위 두 곳 · 편의점 주류 판매는 자정 종료</span></td></tr>
   </table>
 </div>
 
@@ -75,10 +87,10 @@
     <tr><td class="t">10:30</td><td>피피섬 도착 → 짐 맡기기: <b>피피 하버 뷰 호텔</b> <span class="en">Phi Phi Harbour View Hotel</span> ✅ <a class="lnk" target="_blank" rel="noopener" href="https://www.agoda.com/ko-kr/phi-phi-harbour-view-hotel/hotel/koh-phi-phi-th.html">아고다↗</a> <span class="note">체크인 14:00 · 항구 방면(조용) — 파티존까지 도보</span></td></tr>
     <tr><td class="t">11:30</td><td><b>선착장 근처 점심</b> — 마을 골목 맛집 중 골라 들어가기<br><span class="note">AI 추천: <b>갈릭 1992</b> <span class="en">Garlic 1992</span>(1992년 노포 파냉커리, 현금만) · <b>온리 누들스</b> <span class="en">Only Noodles</span>(팟타이) · <b>파파야</b> <span class="en">Papaya</span>(커리, 양 많음)</span></td></tr>
     <tr><td class="t">13:00</td><td><b>자유 오후</b> — 해변 수영 · 숙소 수영장 · 톤사이 골목 구경 <span class="badge b-opt">자유</span></td></tr>
-    <tr><td class="t">17:00</td><td><b>피피 뷰포인트</b> 선셋 <span class="en">Phi Phi Viewpoint</span> — 양쪽 바다 항공샷 뷰 (등반 20~30분, 입장 30~50밧)</td></tr>
+    <tr><td class="t">17:00</td><td><b><span class="spot" data-spot="viewpoint">피피 뷰포인트</span></b> 선셋 <span class="en">Phi Phi Viewpoint</span> — 양쪽 바다 항공샷 뷰 (등반 20~30분, 입장 30~50밧)</td></tr>
     <tr><td class="t">19:45</td><td><b>해산물 저녁</b> — 해변가 얼음 진열대에서 골라 조리 (시가, 3인 1,500~3,000밧대) <span class="badge b-cash">현금</span><br><span class="note">AI 추천: <b>톤사이 씨푸드</b> <span class="en">Tonsai Seafood</span>(숙소 도보 2분, 베이 뷰) · <b>코너 씨푸드</b> <span class="en">Corner Seafood</span>(로컬 저렴) · 피피엔 야시장 없음(아침 마켓뿐)</span></td></tr>
     <tr><td class="t">21:00</td><td><b>파이어쇼</b>: Carlito's (톤사이 베이 해변, 21:00~21:30경, 숙소 도보 5분) — 해변 테이블에서 맥주 <span class="note">시간 현지 재확인 · 백업: Slinky(로달럼 20:25~)</span></td></tr>
-    <tr><td class="t">22:00~</td><td><b>골목 따라 자유롭게 한잔</b> — 끌리는 곳으로<br><span class="note">AI 추천: <b>레게 바</b> <span class="en">Reggae Bar</span>(관광객 무에타이 링, 링 오르면 위스키 버킷 무료) · <b>스톤즈</b> <span class="en">Stones</span>(로달럼 빈백 라운지)</span></td></tr>
+    <tr><td class="t">22:00~</td><td><b>골목 따라 자유롭게 한잔</b> — 끌리는 곳으로<br><span class="note">AI 추천: <b>레게 바</b> <span class="en">Reggae Bar</span>(관광객 무에타이 링, 링 오르면 위스키 버킷 무료) · <b>스톤즈</b> <span class="en">Stones</span>(<span class="spot" data-spot="lohdalum">로달럼</span> 빈백 라운지)</span></td></tr>
   </table>
 </div>
 
@@ -86,12 +98,12 @@
 <div class="day d2">
   <div class="day-head"><span>Day 3 · 10/9 (금) — 피피 스노클링 → 빠통 ✅</span><span class="theme">클룩 소그룹 투어 → 15:30 페리 → 방라로드</span></div>
   <table class="sched">
-    <tr><td class="t">08:50</td><td>맥도날드 피피 집결 (10분 전) → <b>09:00 클룩 소그룹 스노클링 투어 (판타완)</b> — 몽키비치 30분 하선·바이킹동굴·피레라군 45분 수영·로사마·마야베이 1시간, 13:00 복귀 <span class="badge b-resv">클룩 예매</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/pXJQYL2O1N">투어↗</a><br><span class="note">마야베이 국립공원비 400밧/인 현장 결제(현금) · 원숭이: 빈손 하선, 먹이 금지 · 체크아웃 짐은 호텔 보관, 레이트 체크아웃(~13:30) 체크인 때 문의</span><br><span class="backup">기상 취소 시: 10/10 호핑으로 몰기</span></td></tr>
+    <tr><td class="t">08:50</td><td>맥도날드 피피 집결 (10분 전) → <b>09:00 클룩 소그룹 스노클링 투어 (판타완)</b> — <span class="spot" data-spot="monkeybeach">몽키비치</span> 30분 하선·바이킹동굴·<span class="spot" data-spot="pileh">피레라군</span> 45분 수영·로사마·<span class="spot" data-spot="mayabay">마야베이</span> 1시간, 13:00 복귀 <span class="badge b-resv">클룩 예매</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/pXJQYL2O1N">투어↗</a><br><span class="note">마야베이 국립공원비 400밧/인 현장 결제(현금) · 원숭이: 빈손 하선, 먹이 금지 · 체크아웃 짐은 호텔 보관, 레이트 체크아웃(~13:30) 체크인 때 문의</span><br><span class="backup">기상 취소 시: 10/10 호핑으로 몰기</span></td></tr>
     <tr><td class="t">13:15</td><td><b>선착장 근처 점심</b> → 수영장 샤워·옷 갈아입기·짐 찾기 <span class="note">레이트 체크아웃은 무료일 때만</span><br><span class="note">AI 추천: <b>온리 누들스</b> <span class="en">Only Noodles</span>(팟타이 전문, 빠름) · <b>파파야</b> <span class="en">Papaya</span>(커리, 양 많음)</span></td></tr>
     <tr><td class="t">15:30</td><td>페리 복귀 (빅보트, → 푸켓 ~17:30) <span class="badge b-resv">클룩 예매</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/x1gO7_exy8">티켓↗</a> <span class="note">페리 시간: 14:30/15:00/15:30 — 15:30이 여유</span></td></tr>
     <tr><td class="t">17:45</td><td><b>숙소로 이동 (차 25분) → 체크인·샤워</b>: <b>로열 파라다이스 호텔 앤 스파</b> <span class="en">The Royal Paradise Hotel &amp; Spa</span> 2박 ✅ <a class="lnk" target="_blank" rel="noopener" href="https://www.agoda.com/ko-kr/the-royal-paradise-hotel-spa/hotel/phuket-th.html">아고다↗</a><br><span class="note">빠통 비치 지역, 방라로드 도보권 · 이동은 페리표 합승밴(150~200밧/인) or 그랩</span></td></tr>
     <tr><td class="t">19:30</td><td><b>빠통 비치 첫 저녁</b> — 숙소 근처 태국식<br><span class="note">AI 추천: <b>넘버6</b> <span class="en">No.6 Restaurant</span>(가성비 태국식+해산물, 웨이팅 15~30분) · <b>깝끌루어이</b> <span class="en">Kaab Gluay</span>(로컬 유명 태국식당)</span></td></tr>
-    <tr><td class="t">21:00</td><td><b>방라로드 구경 + 한잔</b> — 빠통의 바·펍·클럽이 몰린 중심 번화가(숙소 도보 10분), 걸으면서 끌리는 곳으로 <span class="badge b-opt">자유</span><br><span class="note">AI 추천: <b>Red Hot Bar</b>(라이브 록 밴드) · <b>Molly's Tavern</b>(아이리시 펍, 오션뷰) · <b>Aussie Bar</b>(스포츠바)</span></td></tr>
+    <tr><td class="t">21:00</td><td><b><span class="spot" data-spot="bangla">방라로드</span> 구경 + 한잔</b> — 빠통의 바·펍·클럽이 몰린 중심 번화가(숙소 도보 10분), 걸으면서 끌리는 곳으로 <span class="badge b-opt">자유</span><br><span class="note">AI 추천: <b>Red Hot Bar</b>(라이브 록 밴드) · <b>Molly's Tavern</b>(아이리시 펍, 오션뷰) · <b>Aussie Bar</b>(스포츠바)</span></td></tr>
   </table>
 </div>
 
@@ -100,9 +112,9 @@
   <div class="day-head"><span>Day 4 · 10/10 (토) — 팡아만 투어 + 토요일 밤 ✅</span><span class="theme">제임스본드섬·카누 → 야시장 저녁 → 밤 옵션</span></div>
   <table class="sched">
     <tr><td class="t">07:30</td><td>호텔 픽업 → 아오포 부두 <span class="en">Ao Po Pier</span> (차 ~1시간, 09:00 체크인) <span class="badge b-resv">클룩 예매</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/jy2qWOOY3P">투어↗</a></td></tr>
-    <tr><td class="t">09:45</td><td><b>팡아만 제임스본드섬 투어</b> — 파낙섬 카누(종유석·맹그로브 동굴) → 제임스본드섬 <span class="en">카오타푸</span>·카오핑칸 → 홍섬 카누 → 13:30 선상 점심(갓 조리 태국식) → 15:00 수영·카누·과일<br><span class="note">배에서 맥주는 유료 바(밧 현금) · 기상에 따라 일부 포인트 변경 가능</span><br><span class="backup">기상 취소 시: 야누이 비치 자유 스노클링 or 안다만다 워터파크</span></td></tr>
+    <tr><td class="t">09:45</td><td><b>팡아만 제임스본드섬 투어</b> — <span class="spot" data-spot="kopanak">파낙섬</span> 카누(종유석·맹그로브 동굴) → <span class="spot" data-spot="jamesbond">제임스본드섬</span> <span class="en">카오타푸</span>·카오핑칸 → <span class="spot" data-spot="kohong">홍섬</span> 카누 → 13:30 선상 점심(갓 조리 태국식) → 15:00 수영·카누·과일<br><span class="note">배에서 맥주는 유료 바(밧 현금) · 기상에 따라 일부 포인트 변경 가능</span><br><span class="backup">기상 취소 시: 야누이 비치 자유 스노클링 or 안다만다 워터파크</span></td></tr>
     <tr><td class="t">16:30</td><td>복귀 출발 → 빠통 도착 ~18:00</td></tr>
-    <tr><td class="t">18:00</td><td><b>재정비 — 옵션 (자유롭게 택)</b> <span class="badge b-opt">자유</span><br><span class="note">호텔 수영장 한 타임 · 마사지 1시간 (AI 추천: <b>라리사 마사지</b> <span class="en">Lalisa Massage (Thairapy)</span>, 팁 관례 시간당 50~100밧) · 빠통 비치 선셋 산책(일몰 ~18:20) · 방에서 휴식</span></td></tr>
+    <tr><td class="t">18:00</td><td><b>재정비 — 옵션 (자유롭게 택)</b> <span class="badge b-opt">자유</span><br><span class="note">호텔 수영장 한 타임 · 마사지 1시간 (AI 추천: <b>라리사 마사지</b> <span class="en">Lalisa Massage (Thairapy)</span>, 팁 관례 시간당 50~100밧) · <span class="spot" data-spot="patongbeach">빠통 비치</span> 선셋 산책(일몰 ~18:20) · 방에서 휴식</span></td></tr>
     <tr><td class="t">19:30</td><td><b>야시장 저녁</b> — 빠통 야시장에서 해산물+길거리 음식 <span class="badge b-cash">현금</span><br><span class="note">AI 추천: <b>반잔 시장 2층</b> <span class="en">Banzaan Market</span>(정실론 뒤 — 1층서 활해산물 골라 2층서 조리 🦞, 밤엔 주변이 야시장化) · <b>말린 플라자</b> <span class="en">Malin Plaza</span>(빠통 남쪽, 먹거리 중심 야시장, 매일) · <b>OTOP 마켓</b>(랏우팃 로드, 푸드코트+비어바)</span></td></tr>
     <tr><td class="t">21:00</td><td><b>밤 프로그램 — 옵션 (당일 컨디션 보고 택 1)</b> <span class="badge b-pend">미정</span><br><span class="note">AI 추천: <b>방라 복싱 스타디움</b>(무에타이 — 토요일은 MMA, 21:00, 스타디움석 1,600밧) · <b>사이먼 카바레</b>(트랜스젠더 쇼, 매일 18:00/19:45/21:30, 70분, ~800밧) · <b>OTOP The Hole</b>(야시장 안 비어바 — 당구·다트·비어퐁)</span></td></tr>
     <tr><td class="t">23:00~</td><td><b>이후 자유</b> — 끌리는 곳으로 <span class="badge b-opt">자유</span><br><span class="note">AI 추천: <b>Kee Sky Lounge</b>(루프탑, 방라 옆 — 해피아워 21~23시 1+1) · <b>Craft Lounge</b>(크래프트 맥주 셀렉션 빠통 최대) · <b>Illuzion</b>(초대형 EDM 클럽, 새벽까지) · 방라로드에서 한 잔 더</span></td></tr>
@@ -117,10 +129,10 @@
     <tr><td class="t">11:45</td><td>체크아웃 · 짐은 차에</td></tr>
     <tr><td class="t">12:00</td><td><b>🚗 8시간 차량 대여 시작</b> — 기사 포함 전용차 픽업 <span class="badge b-resv">클룩 예매 · 픽업 12:00 메모</span> <a class="lnk" target="_blank" rel="noopener" href="https://s.klook.com/c/vXnvAbJByD">차량↗</a><br><span class="note">12:00~20:30 이용 · 추가금은 현금으로: 공항 지역비 250밧 + 8시간 넘는 시간은 시간당 300밧 · 세단은 24인치 캐리어 3개까지 (28인치가 있으면 SUV로 예약)</span></td></tr>
     <tr><td class="t">12:40</td><td><b>점심 (빅부다 언덕 뷰)</b> — AI 추천: <b>낙껏 씨뷰 카페</b> <span class="en">Nak-Kerd Seaview Cafe</span></td></tr>
-    <tr><td class="t">14:00</td><td><b>빅부다</b> <span class="en">Big Buddha</span> <span class="note">복장: 어깨·무릎 가림(사롱 지참)</span></td></tr>
-    <tr><td class="t">15:15</td><td><b>왓찰롱</b> <span class="en">Wat Chalong</span></td></tr>
+    <tr><td class="t">14:00</td><td><b><span class="spot" data-spot="bigbuddha">빅부다</span></b> <span class="en">Big Buddha</span> <span class="note">복장: 어깨·무릎 가림(사롱 지참)</span></td></tr>
+    <tr><td class="t">15:15</td><td><b><span class="spot" data-spot="watchalong">왓찰롱</span></b> <span class="en">Wat Chalong</span></td></tr>
     <tr><td class="t">16:45</td><td>올드타운 도착 → <b>마사지 1시간</b> <span class="note">AI 추천: <b>Kim's Massage &amp; Spa</b> — 짐은 차에 있으니 몸만</span></td></tr>
-    <tr><td class="t">18:00</td><td><b>선데이 워킹스트리트</b> <span class="en">Lard Yai, Thalang Rd</span> — 야시장 저녁+구경 제대로 (~1h 40m) <span class="badge b-cash">현금</span> <span class="note">일요일만 16~22시</span></td></tr>
+    <tr><td class="t">18:00</td><td><b><span class="spot" data-spot="sundaymarket">선데이 워킹스트리트</span></b> <span class="en">Lard Yai, Thalang Rd</span> — 야시장 저녁+구경 제대로 (~1h 40m) <span class="badge b-cash">현금</span> <span class="note">일요일만 16~22시</span></td></tr>
     <tr><td class="t">19:45</td><td>올드타운 출발 → 공항 (40~50분)</td></tr>
     <tr><td class="t">20:30</td><td>공항 도착 · <b>🚗 차량 대여 종료</b> · 체크인 <span class="note">출발 2시간 15분 전</span></td></tr>
     <tr><td class="t">22:45</td><td>OZ748 출발 → 10/12(월) 07:05 인천 도착</td></tr>
@@ -193,5 +205,106 @@
   <tr><td>예산</td><td>1인 하루 10~20만원(숙박 제외, 투어 포함) — 전 일정 여유 있음</td></tr>
 </table>
 
+<div id="spot-overlay">
+  <div id="spot-modal">
+    <h3><span id="spot-title"></span><button id="spot-close">닫기 ✕</button></h3>
+    <div id="spot-imgs"></div>
+    <a id="spot-more" target="_blank" rel="noopener" href="#">구글 이미지에서 더 보기 ↗</a>
+  </div>
+</div>
+<script>
+var SPOTS = {
+  bigbuddha: { name: "빅부다 Big Buddha", q: "Big Buddha Phuket", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Big_Buddha_-_Phuket%2C_Thailand.JPG/960px-Big_Buddha_-_Phuket%2C_Thailand.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Big_Buddha_-_Phuket.jpg/960px-Big_Buddha_-_Phuket.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Phuket_Thailand_Big-Buddha-of-Phuket-05.jpg/960px-Phuket_Thailand_Big-Buddha-of-Phuket-05.jpg"
+  ]},
+  mayabay: { name: "마야베이 Maya Bay", q: "Maya Bay Phi Phi", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Isla_Phi_Phi_Lay%2C_Tailandia%2C_2013-08-19%2C_DD_23.JPG/960px-Isla_Phi_Phi_Lay%2C_Tailandia%2C_2013-08-19%2C_DD_23.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Playa_Maya%2C_Ko_Phi_Phi%2C_Tailandia%2C_2013-08-19%2C_DD_04.JPG/960px-Playa_Maya%2C_Ko_Phi_Phi%2C_Tailandia%2C_2013-08-19%2C_DD_04.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Playa_Maya%2C_Ko_Phi_Phi%2C_Tailandia%2C_2013-08-19%2C_DD_13.JPG/960px-Playa_Maya%2C_Ko_Phi_Phi%2C_Tailandia%2C_2013-08-19%2C_DD_13.JPG"
+  ]},
+  jamesbond: { name: "제임스본드섬 (카오타푸)", q: "James Bond Island Phang Nga", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Isla_Tapu%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_36.JPG/960px-Isla_Tapu%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_36.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Ko_Tapu_%28James_Bond%29_Island_in_Phang_Nga_Bay%2C_Thailand.jpg/960px-Ko_Tapu_%28James_Bond%29_Island_in_Phang_Nga_Bay%2C_Thailand.jpg"
+  ]},
+  watchalong: { name: "왓찰롱 Wat Chalong", q: "Wat Chalong Phuket", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Grand_Pagoda_-_Wat_Chalong.jpg/960px-Grand_Pagoda_-_Wat_Chalong.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Phuket_Thailand_Wat-Chalong-01.jpg/960px-Phuket_Thailand_Wat-Chalong-01.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Wat_Chalong_-_Phuket.jpg/960px-Wat_Chalong_-_Phuket.jpg"
+  ]},
+  viewpoint: { name: "피피 뷰포인트", q: "Phi Phi viewpoint panorama", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Koh_PhiPhi_Panorama.jpg/960px-Koh_PhiPhi_Panorama.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Koh_Phi_Phi_viewpoint_panorama_%284463472771%29.jpg/960px-Koh_Phi_Phi_viewpoint_panorama_%284463472771%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Koh_Phi_Phi_panorama_%284463519969%29.jpg/960px-Koh_Phi_Phi_panorama_%284463519969%29.jpg"
+  ]},
+  oldtown: { name: "올드타운 밤거리 (야오와랏·탈랑·소이 로마니)", q: "Phuket old town night Soi Romanee", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Thalang_Road%2C_Old_Phuket_Town.jpg/960px-Thalang_Road%2C_Old_Phuket_Town.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Scene_From_Old_Phuket_Town_%28186585641%29.jpeg/960px-Scene_From_Old_Phuket_Town_%28186585641%29.jpeg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Thalang_Road_1.jpg/960px-Thalang_Road_1.jpg"
+  ]},
+  sundaymarket: { name: "선데이 워킹스트리트 (탈랑 로드)", q: "Phuket sunday walking street market Lard Yai", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Thalang_Road_in_Old_Phuket_Town.jpg/960px-Thalang_Road_in_Old_Phuket_Town.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Night_Market%2C_Phuket%2C_Thailand%2C_4_January_2022_-_02.jpg/960px-Night_Market%2C_Phuket%2C_Thailand%2C_4_January_2022_-_02.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Night_Market%2C_Phuket%2C_Thailand%2C_4_January_2022_-_03.jpg/960px-Night_Market%2C_Phuket%2C_Thailand%2C_4_January_2022_-_03.jpg"
+  ]},
+  bangla: { name: "방라로드 Bangla Road", q: "Bangla Road Patong night", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Bangla_Road_Patong_Thajsko_2018_4.jpg/960px-Bangla_Road_Patong_Thajsko_2018_4.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Bangla_Road_Patong_Thajsko_2018_2.jpg/960px-Bangla_Road_Patong_Thajsko_2018_2.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Bangla_Road.JPG/960px-Bangla_Road.JPG"
+  ]},
+  patongbeach: { name: "빠통 비치 Patong Beach", q: "Patong Beach Phuket", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Patong_Beach_%281%29.jpg/960px-Patong_Beach_%281%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Patong_Beach.jpg/960px-Patong_Beach.jpg"
+  ]},
+  kohong: { name: "홍섬 Ko Hong (카누)", q: "Ko Hong Phang Nga kayak", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Ko_Hong_island_beach.jpg/960px-Ko_Hong_island_beach.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Sea_Kayak_Ko_Hong.jpg/960px-Sea_Kayak_Ko_Hong.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ko_Hong_island_beach_panorama.jpg/960px-Ko_Hong_island_beach_panorama.jpg"
+  ]},
+  kopanak: { name: "파낙섬 Ko Panak (동굴 카누)", q: "Ko Panak cave canoe Phang Nga", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Isla_Panak%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_01.JPG/960px-Isla_Panak%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_01.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Isla_Panak%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_03.JPG/960px-Isla_Panak%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_03.JPG",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Isla_Panak%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_05.JPG/960px-Isla_Panak%2C_Phuket%2C_Tailandia%2C_2013-08-20%2C_DD_05.JPG"
+  ]},
+  pileh: { name: "피레라군 Pileh Lagoon", q: "Pileh Lagoon Phi Phi", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/A_Long-tail_Boat_in_Pileh_Lagoon%2C_Phi_Phi_Le.jpg/960px-A_Long-tail_Boat_in_Pileh_Lagoon%2C_Phi_Phi_Le.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Pileh_Lagoon.jpg/960px-Pileh_Lagoon.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Ao_Phi_Leh_Lagoon_1.jpg/960px-Ao_Phi_Leh_Lagoon_1.jpg"
+  ]},
+  monkeybeach: { name: "몽키비치 Monkey Beach", q: "Monkey Beach Phi Phi", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Monkey_Beach_at_Phi_Phi_Don_Island_-_panoramio.jpg/960px-Monkey_Beach_at_Phi_Phi_Don_Island_-_panoramio.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Monkey_Beach_at_Phi_Phi_Don_Island_-_panoramio_%281%29.jpg/960px-Monkey_Beach_at_Phi_Phi_Don_Island_-_panoramio_%281%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Isla_Phi_Phi_Lay%2C_Tailandia%2C_2013-08-19%2C_DD_15.JPG/960px-Isla_Phi_Phi_Lay%2C_Tailandia%2C_2013-08-19%2C_DD_15.JPG"
+  ]},
+  lohdalum: { name: "로달럼 비치 (파이어쇼 존)", q: "Loh Dalum beach Phi Phi fire show", imgs: [
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Loh_Dalum_Bay%2C_Ko_Phi_Phi_Don.jpg/960px-Loh_Dalum_Bay%2C_Ko_Phi_Phi_Don.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Loh_Dalum_beach_%281%29.jpg/960px-Loh_Dalum_beach_%281%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Loh_Dalum_beach_%282%29.jpg/960px-Loh_Dalum_beach_%282%29.jpg"
+  ]}
+};
+var overlay = document.getElementById("spot-overlay");
+function openSpot(key) {
+  var s = SPOTS[key];
+  if (!s) return;
+  document.getElementById("spot-title").textContent = s.name;
+  var box = document.getElementById("spot-imgs");
+  box.innerHTML = "";
+  s.imgs.forEach(function(u) {
+    var img = document.createElement("img");
+    img.loading = "lazy";
+    img.src = u;
+    box.appendChild(img);
+  });
+  document.getElementById("spot-more").href = "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(s.q);
+  overlay.classList.add("on");
+}
+document.querySelectorAll(".spot").forEach(function(el) {
+  el.addEventListener("click", function() { openSpot(el.dataset.spot); });
+});
+overlay.addEventListener("click", function(e) { if (e.target === overlay) overlay.classList.remove("on"); });
+document.getElementById("spot-close").addEventListener("click", function() { overlay.classList.remove("on"); });
+document.addEventListener("keydown", function(e) { if (e.key === "Escape") overlay.classList.remove("on"); });
+</script>
 </body>
 </html>
